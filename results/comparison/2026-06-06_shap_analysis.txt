@@ -1,0 +1,174 @@
+SHAP Attribution Analysis -- 2026-06-06
+Models: TF-IDF MLP  vs  Transformer from scratch
+======================================================================
+
+======================================================================
+  CASE 1 -- Gratitude (explicit lexical trigger)
+======================================================================
+
+  Text (preprocessed): congratulation mate
+  Real label         : gratitude
+  [TRANS] prediction : surprise (conf=0.4465)
+  [TRANS] top tokens : mate(+0.77), congratulation(+0.44)
+  [MLP]   prediction : neutral (conf=0.1794)
+  [MLP]   top tokens : [UNK](-0.79), mate(+0.24), congratulation(-0.11)
+
+
+  Text (preprocessed): believe search provider good luck good ya
+  Real label         : gratitude
+  [TRANS] prediction : optimism (conf=0.6121)
+  [TRANS] top tokens : luck(+0.80), [UNK](+0.63), search(-0.56), believe(+0.39), good(-0.34)
+  [MLP]   prediction : optimism (conf=0.3060)
+  [MLP]   top tokens : luck(+0.77), good luck(+0.73), ya(-0.56), believe(+0.30), search(-0.26)
+
+
+  Text (preprocessed): thank appreciate comment
+  Real label         : gratitude
+  [TRANS] prediction : gratitude (conf=0.9901)
+  [TRANS] top tokens : thank(+0.78), appreciate(-0.48), comment(-0.18)
+  [MLP]   prediction : gratitude (conf=0.9887)
+  [MLP]   top tokens : thank(+0.81), appreciate(+0.21), [UNK](+0.03), comment(-0.03)
+
+
+  Text (preprocessed): 0033 moment m go to head bed thank reading good night
+  Real label         : gratitude
+  [TRANS] prediction : gratitude (conf=0.9893)
+  [TRANS] top tokens : thank(+0.79), go(+0.73), [UNK](-0.51), m(+0.46), bed(+0.29)
+  [MLP]   prediction : gratitude (conf=0.9901)
+  [MLP]   top tokens : thank(+0.95), m go(+0.28), bed(-0.10), m(+0.09), [UNK](-0.08)
+
+
+  Text (preprocessed): thank consensus
+  Real label         : gratitude
+  [TRANS] prediction : gratitude (conf=0.9900)
+  [TRANS] top tokens : thank(+0.78), [UNK](+0.29)
+  [MLP]   prediction : gratitude (conf=0.9648)
+  [MLP]   top tokens : thank(+0.78), [UNK](+0.04)
+
+======================================================================
+  CASE 2 -- MLP beats Transformer
+======================================================================
+
+  Text (preprocessed): m sorry not hear useless badgering drink 38 wine bottle enjoy extra 200
+  Real label         : remorse
+  [TRANS] prediction : joy (conf=0.3038)
+  [TRANS] top tokens : bottle(+0.87), enjoy(+0.65), extra(+0.52), [UNK](+0.51), [UNK](+0.49)
+  [MLP]   prediction : remorse (conf=0.6295)
+  [MLP]   top tokens : sorry(+0.91), sorry not(+0.56), enjoy(-0.46), useless(+0.40), not hear(-0.36)
+
+
+  Text (preprocessed): video annoying like terrible place hang
+  Real label         : annoyance
+  [TRANS] prediction : fear (conf=0.3820)
+  [TRANS] top tokens : place(-0.79), terrible(+0.68), annoying(+0.62), video(-0.42), like(-0.31)
+  [MLP]   prediction : annoyance (conf=0.3158)
+  [MLP]   top tokens : annoying(+0.85), terrible(-0.39), video(-0.17), place(+0.08), like(-0.07)
+
+
+  Text (preprocessed): maybe try ask m worried scare
+  Real label         : fear
+  [TRANS] prediction : optimism (conf=0.5268)
+  [TRANS] top tokens : worried(+0.78), maybe(+0.71), try(-0.55), scare(+0.48), ask(-0.36)
+  [MLP]   prediction : fear (conf=0.8319)
+  [MLP]   top tokens : scare(+0.87), m worried(+0.36), worried(+0.31), maybe(-0.12), m(+0.10)
+
+======================================================================
+  CASE 3 -- Transformer beats MLP
+======================================================================
+
+  Text (preprocessed): wanna die not wanna live anymore wanna die bad return dark abyss long death sweet kiss
+  Real label         : sadness
+  [TRANS] prediction : sadness (conf=0.2577)
+  [TRANS] top tokens : not(+0.78), death(+0.76), wanna(-0.72), die(+0.72), return(+0.69)
+  [MLP]   prediction : disappointment (conf=0.5598)
+  [MLP]   top tokens : wanna(-0.83), anymore(+0.70), die(+0.70), bad(+0.68), [UNK](+0.63)
+
+
+  Text (preprocessed): rip guess hope op happy cake day
+  Real label         : optimism
+  [TRANS] prediction : optimism (conf=0.3675)
+  [TRANS] top tokens : happy(-0.82), cake(-0.54), hope(+0.50), day(-0.40), op(+0.38)
+  [MLP]   prediction : joy (conf=0.8073)
+  [MLP]   top tokens : happy(+0.91), cake(+0.31), day(+0.29), cake day(+0.20), happy cake(+0.15)
+
+
+  Text (preprocessed): equally love despise talk player diving flop
+  Real label         : love
+  [TRANS] prediction : love (conf=0.4294)
+  [TRANS] top tokens : love(+0.81), despise(-0.60), flop(-0.51), player(+0.43), [UNK](+0.11)
+  [MLP]   prediction : neutral (conf=0.2212)
+  [MLP]   top tokens : despise(+0.77), love(-0.74), player(-0.49), equally(+0.17), [UNK](+0.16)
+
+======================================================================
+  CASE 4 -- Rare class: grief
+======================================================================
+
+  Text (preprocessed): death senseless base god forsake
+  Real label         : grief
+  [TRANS] prediction : sadness (conf=0.5842)
+  [TRANS] top tokens : [UNK](-0.78), [UNK](-0.66), death(+0.57), god(+0.30), base(-0.02)
+  [MLP]   prediction : neutral (conf=0.2166)
+  [MLP]   top tokens : god(-0.78), death(+0.66), base(-0.10), [UNK](+0.03)
+
+
+  Text (preprocessed): rip guy psych
+  Real label         : grief
+  [TRANS] prediction : neutral (conf=0.3188)
+  [TRANS] top tokens : [UNK](+0.77), guy(+0.63), rip(-0.52)
+  [MLP]   prediction : neutral (conf=0.1262)
+  [MLP]   top tokens : rip(-0.79), [UNK](-0.38), guy(+0.29)
+
+======================================================================
+  CASE 4 -- Rare class: embarrassment
+======================================================================
+
+  Text (preprocessed): know cringing cathartic
+  Real label         : embarrassment
+  [TRANS] prediction : approval (conf=0.2161)
+  [TRANS] top tokens : [UNK](-0.78), [UNK](-0.48), know(+0.18)
+  [MLP]   prediction : neutral (conf=0.1821)
+  [MLP]   top tokens : know(-0.76), [UNK](-0.73)
+
+
+  Text (preprocessed): oh s awkward not understand people not understand weird thing like
+  Real label         : embarrassment
+  [TRANS] prediction : approval (conf=0.1798)
+  [TRANS] top tokens : thing(-0.86), not(+0.60), understand(+0.51), not(+0.49), people(-0.42)
+  [MLP]   prediction : confusion (conf=0.5888)
+  [MLP]   top tokens : not understand(+0.88), understand(+0.68), awkward(-0.34), thing like(-0.27), oh s(-0.23)
+
+
+  Text (preprocessed): ve real bad play guy count asshole receive mute
+  Real label         : embarrassment
+  [TRANS] prediction : annoyance (conf=0.1574)
+  [TRANS] top tokens : ve(+0.78), receive(+0.73), guy(-0.61), bad(+0.51), real(+0.46)
+  [MLP]   prediction : neutral (conf=0.3535)
+  [MLP]   top tokens : receive(-0.81), count(+0.66), play(+0.54), bad(-0.49), real(+0.39)
+
+======================================================================
+  CASE 4 -- Rare class: excitement
+======================================================================
+
+  Text (preprocessed): super excited watch syracuse year actually spring season ticket
+  Real label         : excitement
+  [TRANS] prediction : excitement (conf=0.2374)
+  [TRANS] top tokens : excited(+0.81), [UNK](-0.67), super(+0.60), season(-0.51), actually(+0.39)
+  [MLP]   prediction : excitement (conf=0.8701)
+  [MLP]   top tokens : excited(+0.92), spring(-0.13), year(+0.10), season(-0.06), ticket(+0.05)
+
+
+  Text (preprocessed): seat young ragewalker
+  Real label         : excitement
+  [TRANS] prediction : neutral (conf=0.4555)
+  [TRANS] top tokens : [UNK](+0.80), seat(+0.14), young(+0.10)
+  [MLP]   prediction : neutral (conf=0.2042)
+  [MLP]   top tokens : seat(+0.77), young(-0.71), [UNK](-0.29)
+
+
+  Text (preprocessed): remind iasip
+  Real label         : excitement
+  [TRANS] prediction : neutral (conf=0.3568)
+  [TRANS] top tokens : remind(-0.78), [UNK](-0.28)
+  [MLP]   prediction : realization (conf=0.1833)
+  [MLP]   top tokens : remind(+0.78), [UNK](-0.22)
+
