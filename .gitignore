@@ -1,0 +1,41 @@
+# Unused Keras Tuner folders
+tuner_results/tfidf_mlp_light/
+tuner_results/transformer_scratch_fast/
+
+# Virtual environments and dependencies
+.venv/
+venv/
+env/
+.uv/
+uv.lock
+
+# Python cache and temporary build files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+
+# Notebooks and test caches
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+.pytest_cache/
+.coverage
+
+# IDE and OS files
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Credentials and environment variables
+.env
+.env.*
+*.pem
+*.key
