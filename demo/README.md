@@ -9,13 +9,13 @@ You can try the interactive demo online on [Hugging Face Spaces](https://hugging
    pip install -r requirements.txt
    python -m spacy download en_core_web_sm
 
-```
+   ```
 
 2. **Run the Gradio app**:
-```bash
-python demo/demo.py
+   ```bash
+   python demo/demo.py
 
-```
+   ```
 
 
 The app will automatically start and open at `http://localhost:7860`.
